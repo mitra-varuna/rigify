@@ -27,7 +27,7 @@ from ...utils import strip_org, make_deformer_name
 from ...utils import create_bone_widget
 
 
-class Rig:
+class Rig(object):
     """ A "copy_chain" rig.  All it does is duplicate the original bone chain
         and constrain it.
         This is a control and deformation rig.

@@ -128,7 +128,7 @@ class DATA_PT_rigify_layer_names(bpy.types.Panel):
             split.prop(rigify_layer, "name",  text="Layer %d" % (i + 1))
             split.prop(rigify_layer, "row",   text="")
 
-            #split.prop(rigify_layer, "column", text="")  
+            #split.prop(rigify_layer, "column", text="")
 
 
 class BONE_PT_rigify_buttons(bpy.types.Panel):
@@ -412,29 +412,14 @@ class EncodeWidget(bpy.types.Operator):
 #menu_func = (lambda self, context: self.layout.menu("INFO_MT_armature_metarig_add", icon='OUTLINER_OB_ARMATURE'))
 
 #from bl_ui import space_info  # ensure the menu is loaded first
+to_register = [DATA_PT_rigify_layer_names, DATA_PT_rigify_buttons,BONE_PT_rigify_buttons,VIEW3D_PT_tools_rigify_dev,LayerInit,Generate,Sample,EncodeMetarig,EncodeMetarigSample,EncodeWidget]
+
 
 def register():
-    bpy.utils.register_class(DATA_PT_rigify_layer_names)
-    bpy.utils.register_class(DATA_PT_rigify_buttons)
-    bpy.utils.register_class(BONE_PT_rigify_buttons)
-    bpy.utils.register_class(VIEW3D_PT_tools_rigify_dev)
-    bpy.utils.register_class(LayerInit)
-    bpy.utils.register_class(Generate)
-    bpy.utils.register_class(Sample)
-    bpy.utils.register_class(EncodeMetarig)
-    bpy.utils.register_class(EncodeMetarigSample)
-    bpy.utils.register_class(EncodeWidget)
-    #space_info.INFO_MT_armature_add.append(ui.menu_func)
+    for item in to_register:
+        bpy.utils.register_class(to_register)
 
 
 def unregister():
-    bpy.utils.unregister_class(DATA_PT_rigify_layer_names)
-    bpy.utils.unregister_class(DATA_PT_rigify_buttons)
-    bpy.utils.unregister_class(BONE_PT_rigify_buttons)
-    bpy.utils.unregister_class(VIEW3D_PT_tools_rigify_dev)
-    bpy.utils.unregister_class(LayerInit)
-    bpy.utils.unregister_class(Generate)
-    bpy.utils.unregister_class(Sample)
-    bpy.utils.unregister_class(EncodeMetarig)
-    bpy.utils.unregister_class(EncodeMetarigSample)
-    bpy.utils.unregister_class(EncodeWidget)
+    for item in to_register:
+        bpy.utils.unregister_class(to_register)
